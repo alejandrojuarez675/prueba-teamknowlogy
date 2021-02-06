@@ -11,7 +11,7 @@ export function hasMutation(dnaString) {
     validate(dnaString);
 
     const nSize = dnaString.length;
-    const deathBorderSize = nSize - 4;
+    const deathBorderSize = nSize - 3;
 
     for (let i=0; i < nSize; i++) {
         for (let j=0; j < nSize; j++) {
