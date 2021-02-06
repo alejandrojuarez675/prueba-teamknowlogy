@@ -6,7 +6,8 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "start": "babel src --out-dir lib && node lib/index.js",
-    "dev": "nodemon ./src/index.js --exec babel-node"
+    "dev": "nodemon ./src/index.js --exec babel-node",
+    "test": "nyc ./node_modules/.bin/babel-node ./node_modules/.bin/mocha 'test/**/*.js' --recursive"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,9 @@
     "@babel/core": "^7.12.10",
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
-    "nodemon": "^2.0.7"
+    "chai": "^4.3.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0"
   }
 }
