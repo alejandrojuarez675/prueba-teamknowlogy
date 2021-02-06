@@ -56,9 +56,9 @@ describe('MutationEngine', () => {
         const dna = [
             "ATGCGA",
             "CAGTGC",
-            "TTATTG",
+            "TTACTT",
             "AGACGG",
-            "GCGTCG",
+            "GCGCCA",
             "TCACTG",
         ];
         assert.isTrue(hasMutation(dna))

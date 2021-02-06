@@ -7,7 +7,7 @@
     "build": "babel src --out-dir lib",
     "start": "babel src --out-dir lib && node lib/index.js",
     "dev": "nodemon ./src/index.js --exec babel-node",
-    "test": "nyc ./node_modules/.bin/babel-node ./node_modules/.bin/mocha 'test/**/*.js' --recursive"
+    "test": "nyc ./node_modules/.bin/babel-node ./node_modules/.bin/mocha 'test/**/*.js' --recursive  --exit"
   },
   "repository": {
     "type": "git",
