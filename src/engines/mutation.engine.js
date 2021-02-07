@@ -75,6 +75,9 @@ export function hasMutation(dnaString) {
  */
 function validate(dnaString) {
 
+    const isEmpty = !dnaString || !dnaString.length || dnaString.length === 0;
+    if (isEmpty) { throw new Error('The DNA string is Empty'); }
+
     const isNxNMatrix = dnaString.map(x => x.length === dnaString.length).reduce((a, b) => a && b);
     if (!isNxNMatrix) { throw new Error('The DNA string have to be a NxN matrix'); }
 

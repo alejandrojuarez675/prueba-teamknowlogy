@@ -143,4 +143,10 @@ describe('MutationEngine', () => {
         ];
         assert.Throw(() => hasMutation(dna))
     });
+
+
+    it('#hasMutation() - validation Matrix is empty', () => {
+        const dna = [];
+        assert.Throw(() => hasMutation(dna))
+    });
 });
