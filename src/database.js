@@ -11,7 +11,7 @@ async function connect() {
     const dbProtocol = process.env.DB_PROTOCOL || 'mongodb';
     const dbAuth = process.env.USER_PASSWORD || undefined;
 
-    await mongoose.connect(`${dbAuth ? dbAuth + '@' : ''}${dbProtocol}://${host}/${dbName}`, {
+    await mongoose.connect(`${dbProtocol}://${dbAuth ? dbAuth + '@' : ''}${host}/${dbName}?retryWrites=true&w=majority`, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
