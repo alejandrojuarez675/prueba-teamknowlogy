@@ -8,8 +8,10 @@ import mongoose from 'mongoose';
 async function connect() {
     const host = process.env.MONGO_HOST || 'localhost';
     const dbName = process.env.DB || 'prueba-teamknowlogy';
+    const dbProtocol = process.env.DB_PROTOCOL || 'mongodb';
+    const dbAuth = process.env.USER_PASSWORD || undefined;
 
-    await mongoose.connect(`mongodb://${host}/${dbName}`, {
+    await mongoose.connect(`${dbAuth ? dbAuth + '@' : ''}${dbProtocol}://${host}/${dbName}`, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
