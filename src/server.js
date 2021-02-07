@@ -20,7 +20,7 @@ export default async function createServer(primaryPort) {
     // routes
     app.use('', mutationRouter);
 
-    const port = primaryPort || process.env.PORT || 3000;
+    const port = primaryPort || process.env.PORT || 8080;
     app.listen(port, () => {
         console.log(`Server run on port ${port}`)
     });
