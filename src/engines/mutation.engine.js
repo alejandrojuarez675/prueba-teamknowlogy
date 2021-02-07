@@ -74,6 +74,19 @@ export function hasMutation(dnaString) {
  * The only 4 accepted caracters are A, T, C and G.
  */
 function validate(dnaString) {
+
+    const isNxNMatrix = dnaString.map(x => x.length === dnaString.length).reduce((a, b) => a && b);
+    if (!isNxNMatrix) { throw new Error('The DNA string have to be a NxN matrix'); }
+
+    const isVerySmall = dnaString.length < 4;
+    if(isVerySmall) { throw new Error('The DNA string have to be a NxN matrix. N must to be bigger than 4'); }
+
+    const nitrogenedBases = ['A', 'T', 'G', 'C'];
+    const isValidNitrogedBases = dnaString
+        .map(x => x.split('').map(y => nitrogenedBases.includes(y)).reduce((a, b) => a && b))
+        .reduce((a, b) => a && b);
+    if (!isValidNitrogedBases) { throw new Error('The DNA string have invalid caracters. The only valid are A, T, G and C.'); }
+
 }
 
 /**

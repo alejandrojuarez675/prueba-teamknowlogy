@@ -110,4 +110,37 @@ describe('MutationEngine', () => {
             "TCACTG"];
         assert.isTrue(hasMutation(dna))
     });
+
+    it('#hasMutation() - validation Matrix NxN', () => {
+        const dna = [
+            "ATGCGA",
+            "CAGTGC",
+            "TTATGT",
+            "AGAAGGDDDDD",
+            "CCCCTA",
+            "TCACTG"];
+
+        assert.Throw(() => hasMutation(dna))
+    });
+
+    it('#hasMutation() - validation Matrix NxN', () => {
+        const dna = [
+            "ATGCGA",
+            "CAGTGC",
+            "TSATTT",
+            "AGACGG",
+            "GCGTCA",
+            "TCACTG"];
+
+        assert.Throw(() => hasMutation(dna))
+    });
+
+    it('#hasMutation() - validation Matrix NxN. N<4', () => {
+        const dna = [
+            "ATG",
+            "CAG",
+            "TTA",
+        ];
+        assert.Throw(() => hasMutation(dna))
+    });
 });

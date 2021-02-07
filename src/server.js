@@ -2,6 +2,13 @@ import express from 'express';
 import morgan from 'morgan';
 import mutationRouter from './routes/mutation.routes';
 
+/**
+ * This method allow you create and run a server with the program.
+ * 
+ * The main idea is use this method in `index.js` and the integration tests.
+ * 
+ * @param {Number} primaryPort 
+ */
 export default async function createServer(primaryPort) {
     const app = express();
     

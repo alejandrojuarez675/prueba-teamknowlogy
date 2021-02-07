@@ -8,20 +8,20 @@ const router = Router();
 router.post('/mutation', async (req, res) => {
     if (!req.body || !req.body.dna) res.status(400).send('Please, send a valid dna string')
 
+    let hasAnyMutation;
     try {
-        const hasAnyMutation = hasMutation(req.body.dna);
-        
-        const verifiedDna = new VerifiedDna({ dna: req.body.dna, hasMutation: hasAnyMutation });
-        verifiedDna.save()
-
-        updateStats(hasAnyMutation);
-
-        if (hasAnyMutation) { res.status(403).send('403-Forbidden'); } 
-        else { res.status(200).send('200-OK'); }
-
+        hasAnyMutation = hasMutation(req.body.dna);
     } catch (err) {
-        res.status(500).send(err.message);
+        res.status(400).send(err.message);
     }
+        
+    const verifiedDna = new VerifiedDna({ dna: req.body.dna, hasMutation: hasAnyMutation });
+    verifiedDna.save()
+
+    updateStats(hasAnyMutation);
+
+    if (hasAnyMutation) { res.status(403).send('403-Forbidden'); } 
+    else { res.status(200).send('200-OK'); }
 
 })
 
@@ -43,6 +43,10 @@ router.get('/stats', async (_req, res) => {
     });
 })
 
+/**
+ * Save the necessary information to recovery the stats in the DB
+ * @param {Boolean} hasAnyMutation 
+ */
 async function updateStats(hasAnyMutation) {
     const stats = await StatsVerifiedDna.find({});
 
