@@ -34,7 +34,7 @@ router.get('/stats', async (_req, res) => {
     }
 
     const ratio = statsVerifiedDna[0].withoutMutation != 0 ? 
-        statsVerifiedDna[0].withMutation/statsVerifiedDna[0].withoutMutation : 0;
+        statsVerifiedDna[0].withMutation/statsVerifiedDna[0].withoutMutation : 999999999;
 
     res.json({
         count_mutations: statsVerifiedDna[0].withMutation,
